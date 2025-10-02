@@ -1,0 +1,127 @@
+.logo-uploader {
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.logo-preview {
+    width: 300px;
+    height: 200px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-preview.drag-over {
+    border-color: #1a73e8;
+    background: rgba(26, 115, 232, 0.1);
+    transform: scale(1.02);
+}
+
+.upload-placeholder {
+    text-align: center;
+    color: #666;
+    padding: 2rem;
+}
+
+.upload-placeholder i {
+    font-size: 3rem;
+    color: #1a73e8;
+    margin-bottom: 1rem;
+}
+
+.upload-placeholder p {
+    margin-bottom: 1rem;
+}
+
+#logo-preview-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.logo-settings {
+    margin-top: 2rem;
+}
+
+.setting-group {
+    margin-bottom: 1rem;
+}
+
+.setting-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #4a4a4a;
+    font-weight: 500;
+}
+
+.size-control {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#logo-size {
+    flex: 1;
+}
+
+#size-value {
+    min-width: 3rem;
+    text-align: right;
+    color: #666;
+}
+
+.position-select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 2px solid #eee;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #4a4a4a;
+    transition: all 0.3s ease;
+}
+
+.position-select:focus {
+    border-color: #1a73e8;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+}
+
+.error-message {
+    color: #dc3545;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 6px;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    text-align: center;
+    display: none;
+}
+
+.upload-btn {
+    background: #1a73e8;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.upload-btn:hover {
+    background: #1557b0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

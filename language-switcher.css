@@ -1,0 +1,47 @@
+.language-switcher {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 1000;
+}
+
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid #1a73e8;
+    background: white;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.lang-btn img {
+    width: 20px;
+    height: auto;
+    border-radius: 2px;
+}
+
+.lang-btn.active {
+    background: #1a73e8;
+    color: white;
+}
+
+.lang-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .language-switcher {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin: 1rem auto;
+        justify-content: center;
+    }
+}

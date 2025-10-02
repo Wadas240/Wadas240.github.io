@@ -1,0 +1,138 @@
+{
+    "th": {
+        "title": "W/QrCode - สร้างและสแกน QR Code",
+        "subtitle": "โซลูชั่น QR Code ครบวงจร",
+        "tabs": {
+            "generate": "สร้าง QR Code",
+            "scan": "สแกน QR Code",
+            "history": "ประวัติ",
+            "tools": "เครื่องมือ",
+            "batch": "สร้างหลายรายการ",
+            "advanced": "ขั้นสูง"
+        },
+        "generate": {
+            "placeholder": "ป้อนข้อความหรือ URL",
+            "button": "สร้าง QR Code",
+            "download": "ดาวน์โหลด QR Code",
+            "copyText": "คัดลอกข้อความ"
+        },
+        "scan": {
+            "camera": "ใช้กล้อง",
+            "file": "อัปโหลดรูปภาพ",
+            "dragDrop": "ลากและวางรูป QR Code ที่นี่ หรือ",
+            "chooseFile": "เลือกไฟล์",
+            "success": "สแกน QR Code สำเร็จ!",
+            "content": "เนื้อหา:",
+            "noQrFound": "ไม่พบ QR code ในรูปภาพ"
+        },
+        "history": {
+            "all": "ทั้งหมด",
+            "generated": "สร้าง",
+            "scanned": "สแกน",
+            "clear": "ล้างประวัติ"
+        },
+        "tools": {
+            "style": "ปรับแต่ง QR Code",
+            "foreground": "สีพื้นหน้า:",
+            "background": "สีพื้นหลัง:",
+            "size": "ขนาด QR:",
+            "settings": "การตั้งค่า",
+            "errorCorrection": "แก้ไขข้อผิดพลาด:",
+            "autoSave": "บันทึกอัตโนมัติ:",
+            "templates": "เทมเพลตสำเร็จรูป"
+        },
+        "batch": {
+            "import": "นำเข้าข้อมูล",
+            "preview": "ตัวอย่าง",
+            "generateAll": "สร้างทั้งหมด",
+            "downloadZip": "ดาวน์โหลด ZIP"
+        },
+        "advanced": {
+            "logoIntegration": "เพิ่มโลโก้",
+            "uploadLogo": "อัปโหลดโลโก้",
+            "logoSize": "ขนาดโลโก้:",
+            "position": "ตำแหน่ง:",
+            "center": "กลาง",
+            "topLeft": "บนซ้าย",
+            "topRight": "บนขวา",
+            "bottomLeft": "ล่างซ้าย",
+            "bottomRight": "ล่างขวา"
+        },
+
+        "copied": "คัดลอกแล้ว!",
+        "footer": {
+            "madeWith": "สร้างด้วย",
+            "by": "โดย W/QrCode",
+            "help": "ช่วยเหลือ",
+            "about": "เกี่ยวกับ"
+        }
+    },
+    "en": {
+        "title": "W/QrCode - QR Code Generator & Scanner",
+        "subtitle": "All-in-one QR Code Solution",
+        "tabs": {
+            "generate": "Generate QR Code",
+            "scan": "Scan QR Code",
+            "history": "History",
+            "tools": "Tools",
+            "batch": "Batch",
+            "advanced": "Advanced"
+        },
+        "generate": {
+            "placeholder": "Enter text or URL",
+            "button": "Generate QR Code",
+            "download": "Download QR Code",
+            "copyText": "Copy Text"
+        },
+        "scan": {
+            "camera": "Use Camera",
+            "file": "Upload Image",
+            "dragDrop": "Drag & Drop QR Code image here or",
+            "chooseFile": "Choose File",
+            "success": "QR Code successfully scanned!",
+            "content": "Content:",
+            "noQrFound": "No QR code found in the image"
+        },
+        "history": {
+            "all": "All",
+            "generated": "Generated",
+            "scanned": "Scanned",
+            "clear": "Clear History"
+        },
+        "tools": {
+            "style": "QR Style",
+            "foreground": "Foreground Color:",
+            "background": "Background Color:",
+            "size": "QR Size:",
+            "settings": "Settings",
+            "errorCorrection": "Error Correction:",
+            "autoSave": "Auto-save:",
+            "templates": "Quick Templates"
+        },
+        "batch": {
+            "import": "Import Data",
+            "preview": "Preview",
+            "generateAll": "Generate All",
+            "downloadZip": "Download ZIP"
+        },
+        "advanced": {
+            "logoIntegration": "Logo Integration",
+            "uploadLogo": "Upload Logo",
+            "logoSize": "Logo Size:",
+            "position": "Position:",
+            "center": "Center",
+            "topLeft": "Top Left",
+            "topRight": "Top Right",
+            "bottomLeft": "Bottom Left",
+            "bottomRight": "Bottom Right"
+        },
+
+        "copied": "Copied!",
+        "footer": {
+            "madeWith": "Made with",
+            "by": "by W/QrCode",
+            "help": "Help",
+            "about": "About"
+        }
+    }
+}

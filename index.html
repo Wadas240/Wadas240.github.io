@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="สร้างและสแกน QR Code ฟรี ออนไลน์ ใช้งานง่าย รองรับภาษาไทย มีฟีเจอร์ครบครัน">
+    <meta name="keywords" content="qr code, qr code generator, qr scanner, qr code ฟรี, สร้าง qr code, สแกน qr code">
+    <meta name="author" content="W/QrCode">
+    <meta name="theme-color" content="#1a73e8">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/">
+    <meta property="og:title" content="W/QrCode - สร้างและสแกน QR Code ฟรี">
+    <meta property="og:description" content="สร้างและสแกน QR Code ฟรี ออนไลน์ ใช้งานง่าย รองรับภาษาไทย มีฟีเจอร์ครบครัน">
+    <meta property="og:image" content="https://your-domain.com/preview.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-domain.com/">
+    <meta property="twitter:title" content="W/QrCode - สร้างและสแกน QR Code ฟรี">
+    <meta property="twitter:description" content="สร้างและสแกน QR Code ฟรี ออนไลน์ ใช้งานง่าย รองรับภาษาไทย มีฟีเจอร์ครบครัน">
+    <meta property="twitter:image" content="https://your-domain.com/preview.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    
+    <title>W/QrCode - สร้างและสแกน QR Code ฟรี</title>
+    <!-- Critical CSS -->
+    <style>
+        /* Critical rendering path CSS */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif; }
+        body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; overflow-x: hidden; }
+        .container { background-color: rgba(255, 255, 255, 0.95); min-height: 100vh; width: 100%; display: flex; flex-direction: column; }
+        .header-content { text-align: center; padding: 1rem; position: relative; }
+        .tabs { display: flex; justify-content: center; gap: 1rem; padding: 1rem; flex-wrap: wrap; }
+        .tab-content { padding: 1rem; flex: 1; display: flex; flex-direction: column; }
+        @media (max-width: 768px) {
+            .tabs { gap: 0.5rem; }
+            .tab-btn { padding: 0.5rem; font-size: 0.9rem; }
+        }
+    </style>
+    
+    <!-- Preload critical fonts and images -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Async CSS loading -->
+    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="logo-uploader.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="language-switcher.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- Fallback for CSS loading -->
+    <noscript>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="logo-uploader.css">
+        <link rel="stylesheet" href="language-switcher.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </noscript>
+    <noscript>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </noscript>
+    <!-- Social Share buttons -->
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=your-property-id" async="async"></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-firestore-compat.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1><i class="fas fa-qrcode"></i> W/QrCode</h1>
+                <p class="subtitle">All-in-one QR Code Solution</p>
+
+            </div>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="generate">
+                <i class="fas fa-plus-circle"></i> <span data-i18n="tabs.generate">Generate QR Code</span>
+            </button>
+            <button class="tab-btn" data-tab="scan">
+                <i class="fas fa-camera"></i> <span data-i18n="tabs.scan">Scan QR Code</span>
+            </button>
+            <button class="tab-btn" data-tab="history">
+                <i class="fas fa-history"></i> <span data-i18n="tabs.history">History</span>
+            </button>
+            <button class="tab-btn" data-tab="tools">
+                <i class="fas fa-tools"></i> <span data-i18n="tabs.tools">Tools</span>
+            </button>
+            <button class="tab-btn" data-tab="batch">
+                <i class="fas fa-layer-group"></i> <span data-i18n="tabs.batch">Batch</span>
+            </button>
+            <button class="tab-btn" data-tab="advanced">
+                <i class="fas fa-sliders-h"></i> <span data-i18n="tabs.advanced">Advanced</span>
+            </button>
+        </div>
+
+        <div class="tab-content" id="generate">
+            <div class="input-group">
+                <input type="text" id="qr-text" placeholder="Enter text or URL">
+                <button id="generate-btn">Generate QR Code</button>
+            </div>
+            <div id="qr-result">
+                <div id="qr-code"></div>
+                <div class="action-buttons">
+                    <button id="copy-text-btn" class="action-btn" style="display: none;">
+                        <i class="fas fa-copy"></i> Copy Text
+                    </button>
+                    <a id="download-link" class="download-btn" download="qrcode.png">
+                        <i class="fas fa-download"></i> Download QR Code
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="scan" style="display: none;">
+            <div class="scan-options">
+                <button class="scan-option-btn active" data-option="camera">
+                    <i class="fas fa-camera"></i> Use Camera
+                </button>
+                <button class="scan-option-btn" data-option="file">
+                    <i class="fas fa-file-image"></i> Upload Image
+                </button>
+            </div>
+            <div class="scanner-container" id="camera-scanner">
+                <video id="scanner-video"></video>
+            </div>
+            <div class="file-upload" id="file-scanner" style="display: none;">
+                <input type="file" id="qr-file-input" accept="image/*" hidden>
+                <div class="upload-area" id="upload-area">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag & Drop QR Code image here or</p>
+                    <button class="upload-btn">Choose File</button>
+                </div>
+            </div>
+            <div id="scan-result" class="result-card">
+                <!-- Results will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <div class="tab-content" id="history" style="display: none;">
+            <div class="history-container">
+                <div class="history-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="generated">Generated</button>
+                    <button class="filter-btn" data-filter="scanned">Scanned</button>
+                    <button class="clear-history"><i class="fas fa-trash"></i> Clear History</button>
+                </div>
+                <div id="history-list">
+                    <!-- History items will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="batch" style="display: none;">
+            <div class="batch-container">
+                <div class="batch-input">
+                    <h3><i class="fas fa-file-import"></i> Import Data</h3>
+                    <div class="import-options">
+                        <button class="import-btn" data-type="csv">
+                            <i class="fas fa-file-csv"></i> Import CSV
+                        </button>
+                        <button class="import-btn" data-type="excel">
+                            <i class="fas fa-file-excel"></i> Import Excel
+                        </button>
+                        <button class="import-btn" data-type="text">
+                            <i class="fas fa-file-alt"></i> Import Text
+                        </button>
+                    </div>
+                    <textarea id="batch-text" placeholder="Or paste your data here, one item per line"></textarea>
+                </div>
+                <div class="batch-preview">
+                    <h3><i class="fas fa-eye"></i> Preview</h3>
+                    <div id="batch-preview-list"></div>
+                </div>
+                <div class="batch-actions">
+                    <button id="generate-batch" class="primary-btn">
+                        <i class="fas fa-magic"></i> Generate All
+                    </button>
+                    <button id="download-batch" class="secondary-btn">
+                        <i class="fas fa-download"></i> Download ZIP
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="advanced" style="display: none;">
+            <div class="advanced-container">
+                <div class="advanced-section">
+                    <h3><i class="fas fa-palette"></i> Style Customization</h3>
+                    <div class="style-options">
+                        <div class="gradient-picker">
+                            <label>Gradient Colors:</label>
+                            <input type="color" id="gradient-color-1" value="#000000">
+                            <input type="color" id="gradient-color-2" value="#000000">
+                            <select id="gradient-type">
+                                <option value="linear">Linear Gradient</option>
+                                <option value="radial">Radial Gradient</option>
+                            </select>
+                        </div>
+                        <div class="pattern-picker">
+                            <label>Pattern Style:</label>
+                            <div class="pattern-options">
+                                <button class="pattern-btn" data-pattern="dots">Dots</button>
+                                <button class="pattern-btn" data-pattern="rounded">Rounded</button>
+                                <button class="pattern-btn" data-pattern="square">Square</button>
+                                <button class="pattern-btn" data-pattern="random">Random</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="advanced-section">
+                    <h3><i class="fas fa-image"></i> Logo Integration</h3>
+                    <div class="logo-uploader">
+                        <input type="file" id="logo-input" accept="image/*" hidden>
+                        <div class="logo-preview">
+                            <img id="logo-preview-img" src="" alt="" style="display: none;">
+                            <button id="upload-logo-btn">
+                                <i class="fas fa-upload"></i> Upload Logo
+                            </button>
+                        </div>
+                        <div class="logo-settings">
+                            <label>Logo Size:</label>
+                            <input type="range" id="logo-size" min="10" max="30" value="20">
+                            <label>Position:</label>
+                            <select id="logo-position">
+                                <option value="center">Center</option>
+                                <option value="top-left">Top Left</option>
+                                <option value="top-right">Top Right</option>
+                                <option value="bottom-left">Bottom Left</option>
+                                <option value="bottom-right">Bottom Right</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="advanced-section">
+                    <h3><i class="fas fa-share-alt"></i> Sharing Options</h3>
+                    <div class="share-buttons">
+                        <div class="sharethis-inline-share-buttons"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="tools" style="display: none;">
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <i class="fas fa-palette"></i>
+                    <h3>QR Style</h3>
+                    <div class="tool-options">
+                        <div class="color-picker">
+                            <label>Foreground Color:</label>
+                            <input type="color" id="foreground-color" value="#000000">
+                        </div>
+                        <div class="color-picker">
+                            <label>Background Color:</label>
+                            <input type="color" id="background-color" value="#FFFFFF">
+                        </div>
+                        <div class="size-picker">
+                            <label>QR Size:</label>
+                            <input type="range" id="qr-size" min="100" max="400" value="200">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <i class="fas fa-cog"></i>
+                    <h3>Settings</h3>
+                    <div class="tool-options">
+                        <div class="setting-option">
+                            <label>Error Correction:</label>
+                            <select id="error-correction">
+                                <option value="L">Low (7%)</option>
+                                <option value="M">Medium (15%)</option>
+                                <option value="Q">Quartile (25%)</option>
+                                <option value="H" selected>High (30%)</option>
+                            </select>
+                        </div>
+                        <div class="setting-option">
+                            <label>Auto-save to History:</label>
+                            <input type="checkbox" id="auto-save" checked>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <i class="fas fa-magic"></i>
+                    <h3>Quick Templates</h3>
+                    <div class="template-grid">
+                        <button class="template-btn" data-template="wifi">
+                            <i class="fas fa-wifi"></i> WiFi
+                        </button>
+                        <button class="template-btn" data-template="contact">
+                            <i class="fas fa-address-card"></i> Contact
+                        </button>
+                        <button class="template-btn" data-template="email">
+                            <i class="fas fa-envelope"></i> Email
+                        </button>
+                        <button class="template-btn" data-template="location">
+                            <i class="fas fa-map-marker-alt"></i> Location
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="app-footer">
+            <p>Made with <i class="fas fa-heart"></i> by W/QrCode</p>
+            <div class="footer-links">
+                <a href="#" class="help-btn"><i class="fas fa-question-circle"></i> Help</a>
+                <a href="#" class="about-btn"><i class="fas fa-info-circle"></i> About</a>
+            </div>
+        </footer>
+    </div>
+    <!-- Core libraries - load immediately -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- Register Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+
+    <!-- Core Scripts -->
+    <script src="script.js" defer></script>
+    <script src="language-manager.js" defer></script>
+    <script src="logo-uploader.js" defer></script>
+
+    <!-- Initialize app when DOM is ready -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check for browser support
+            const supportedFeatures = {
+                webp: false,
+                webgl: false,
+                webworker: false
+            };
+
+            // Check WebP support
+            const webP = new Image();
+            webP.onload = () => { supportedFeatures.webp = true; };
+            webP.onerror = () => { supportedFeatures.webp = false; };
+            webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+
+            // Check WebGL support
+            try {
+                const canvas = document.createElement('canvas');
+                supportedFeatures.webgl = !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
+            } catch (e) {
+                supportedFeatures.webgl = false;
+            }
+
+            // Check Web Workers support
+            supportedFeatures.webworker = !!window.Worker;
+
+            // Add support classes to body
+            Object.keys(supportedFeatures).forEach(feature => {
+                document.body.classList.add(supportedFeatures[feature] ? `${feature}-support` : `no-${feature}-support`);
+            });
+        });
+    </script>
+
+    <!-- Lazy load other libraries -->
+    <script>
+        // Function to dynamically load scripts
+        function loadScript(src, async = true) {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.async = async;
+                script.onload = resolve;
+                script.onerror = reject;
+                document.body.appendChild(script);
+            });
+        }
+
+        // Load libraries based on need
+        const loadScanner = () => {
+            return Promise.all([
+                loadScript('https://unpkg.com/html5-qrcode'),
+                loadScript('https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js')
+            ]);
+        };
+
+        const loadBatchFeatures = () => {
+            return Promise.all([
+                loadScript('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js'),
+                loadScript('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js')
+            ]);
+        };
+
+        // Load Firebase only when user clicks login
+        const loadFirebase = () => {
+            return Promise.all([
+                loadScript('https://www.gstatic.com/firebasejs/9.x.x/firebase-app-compat.js'),
+                loadScript('https://www.gstatic.com/firebasejs/9.x.x/firebase-auth-compat.js'),
+                loadScript('https://www.gstatic.com/firebasejs/9.x.x/firebase-firestore-compat.js')
+            ]).then(() => loadScript('firebase-config.js'));
+        };
+
+        // Load advanced features when needed
+        const loadAdvancedFeatures = () => loadScript('advanced-features.js');
+    </script>
+</body>
+</html>
